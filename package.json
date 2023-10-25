@@ -1,12 +1,12 @@
 {
-  "name": "littledb",
+  "name": "badbank3",
   "version": "1.0.0",
-  "description": "lowdb sample for 1.125",
+  "description": "3 tier banking app",
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "author": "abel@mit.edu",
+  "author": "eslnyc@gmail.com",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.4",
