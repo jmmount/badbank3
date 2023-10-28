@@ -4,7 +4,7 @@ function Withdraw(){
 
   return (
     <Card
-      bgcolor="success"
+      bgcolor="primary"
       header="Withdraw"
       status={status}
       body={show ? 

@@ -8,27 +8,25 @@ function NavBar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="#/CreateAccount/">Create Account</a>
+            <Link to="/CreateAccount/" className="nav-link">Create Account</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#/deposit/">Deposit</a>
+            <Link to="/deposit/" className="nav-link">Deposit</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#/withdraw/">Withdraw</a>
+            <Link to="/withdraw/" className="nav-link">Withdraw</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#/balance/">Balance</a>
+            <Link to="/balance/" className="nav-link">Balance</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#/alldata/">AllData</a>
+            <Link to="/alldata/" className="nav-link">AllData</Link>
           </li>
         </ul>
-        <ul className="navbar-nav ml-auto" id="login-menu"> {/* Use ml-auto to move the "Login" item to the right */}
-        <li className="nav-item">
-    <button className="btn btn-link nav-button" onClick={() => window.location.href = '#/login/'}>
-      Login
-    </button>
-  </li>
+        <ul className="navbar-nav ml-auto" id="login-menu">
+          <li className="nav-item">
+            <Link to="/login/" className="btn btn-link nav-button">Login</Link>
+          </li>
         </ul>
       </div>
       <style>
