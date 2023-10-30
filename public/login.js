@@ -3,16 +3,22 @@ function Login(){
   const [status, setStatus] = React.useState('');  
   const [user, setUser] = React.useState(null);
   
+  const logout = () => {
+    // Clear user data from state and localStorage
+    setUser(null);
+    localStorage.removeItem('user');
+  };
+
   return (
     <Card
-      bgcolor="secondary"
+      bgcolor="primary"
       header="Login"
       status={status}
       body={
         show ? (
           <LoginForm setShow={setShow} setStatus={setStatus} setUser={setUser} />
         ) : (
-          <LoginMsg setShow={setShow} setStatus={setStatus} user={user} />
+          <LoginMsg setShow={setShow} setStatus={setStatus} user={user} logout={logout} />
         )
       }
     />
@@ -27,9 +33,12 @@ function LoginMsg(props) {
       <button
         type="submit"
         className="btn btn-light"
-        onClick={() => props.setShow(true)}
+        onClick={() => {
+          props.setShow(true);
+          props.logout();
+        }}
       >
-        Authenticate again
+        Logout
       </button>
     </>
   );
@@ -54,7 +63,7 @@ function LoginForm(props) {
             props.setUser(data); 
             console.log('JSON:', data);
           } catch(err) {
-            props.setStatus(text);
+            props.setStatus('Please enter your credientials.');
             console.log('err:', text);
           }
         });
