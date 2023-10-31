@@ -28,9 +28,12 @@ function Deposit() {
 }
 
 function DepositMsg(props) {
+  console.log('---------')
+  console.log(props.user.balance)
+  console.log('---------')
   return (
     <>
-      <h5>Success {props.user.name}, your new balance is ${props.user.balance}</h5>
+      <h5>Success {props.user.name}. Your new balance is ${props.user.balance}</h5>
       <button
         type="submit"
         className="btn btn-light"
