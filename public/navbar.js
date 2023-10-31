@@ -1,4 +1,7 @@
 function NavBar() {
+  const handleLogoutClick = () => {
+    window.localStorage.clear();
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="#">BadBank</a>
@@ -25,7 +28,7 @@ function NavBar() {
         </ul>
         <ul className="navbar-nav ml-auto" id="login-menu">
           <li className="nav-item">
-            <Link to="/login/" className="btn btn-link nav-button">Login</Link>
+            <Link to="/login/" className="btn btn-link nav-button" onClick={handleLogoutClick}>Login/Logout</Link>
           </li>
         </ul>
       </div>

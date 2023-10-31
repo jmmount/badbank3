@@ -1,12 +1,12 @@
-function Login(){
-  const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');  
+function Login() {
+  const [show, setShow] = React.useState(true);
+  const [status, setStatus] = React.useState("");
   const [user, setUser] = React.useState(null);
-  
+
   const logout = () => {
     // Clear user data from state and localStorage
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
   };
 
   return (
@@ -16,20 +16,28 @@ function Login(){
       status={status}
       body={
         show ? (
-          <LoginForm setShow={setShow} setStatus={setStatus} setUser={setUser} />
+          <LoginForm
+            setShow={setShow}
+            setStatus={setStatus}
+            setUser={setUser}
+          />
         ) : (
-          <LoginMsg setShow={setShow} setStatus={setStatus} user={user} logout={logout} />
+          <LoginMsg
+            setShow={setShow}
+            setStatus={setStatus}
+            user={user}
+            logout={logout}
+          />
         )
       }
     />
   );
 }
- 
 
 function LoginMsg(props) {
   return (
     <>
-      <h5>Welcome: {props.user ? props.user.name : 'Guest'}</h5>
+      <h5>Welcome: {props.user ? props.user.name : "Guest"}</h5>
       <button
         type="submit"
         className="btn btn-light"
@@ -44,49 +52,59 @@ function LoginMsg(props) {
   );
 }
 function LoginForm(props) {
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-  
-    function handle() {
-      fetch(`/account/login/${email}/${password}`)
-        .then(response => response.text())
-        .then(text => {
-          try {
-            const data = JSON.parse(text);
-            // Assuming the server response includes user data like id, name, etc.
-            // Store user data in localStorage
-            localStorage.setItem('user', JSON.stringify(data));
-            console.log('Balance:', data.balance);
-            console.log('User:', data.name);
-            props.setStatus('');
-            props.setShow(false);
-            props.setUser(data); 
-            console.log('JSON:', data);
-          } catch(err) {
-            props.setStatus('Please enter your credientials.');
-            console.log('err:', text);
-          }
-        });
-    }
-  
-    return (
-      <>
-        Email<br/>
-        <input type="input"
-          className="form-control"
-          placeholder="Enter email"
-          value={email}
-          onChange={e => setEmail(e.currentTarget.value)}/><br/>
-  
-        Password<br/>
-        <input type="password"
-          className="form-control"
-          placeholder="Enter password"
-          value={password}
-          onChange={e => setPassword(e.currentTarget.value)}/><br/>
-  
-        <button type="submit" className="btn btn-light" onClick={handle}>Login</button>
-      </>
-    );
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  function handle() {
+    fetch(`/account/login/${email}/${password}`)
+      .then((response) => response.text())
+      .then((text) => {
+        try {
+          const data = JSON.parse(text);
+          // Store user data in localStorage
+          localStorage.setItem("user", JSON.stringify(data));
+          console.log("Balance:", data.balance);
+          console.log("User:", data.name);
+          props.setStatus("");
+          props.setShow(false);
+          props.setUser(data);
+          console.log("JSON:", data);
+        } catch (err) {
+          props.setStatus("Please enter your credientials.");
+          console.log("err:", text);
+        }
+      });
   }
-  
+
+  return (
+    <>
+      Email
+      <br />
+      <input
+        type="input"
+        className="form-control"
+        placeholder="Enter email"
+        value={email}
+        onChange={(e) => setEmail(e.currentTarget.value)}
+      />
+      <br />
+      Password
+      <br />
+      <input
+        type="password"
+        className="form-control"
+        placeholder="Enter password"
+        value={password}
+        onChange={(e) => setPassword(e.currentTarget.value)}
+      />
+      <br />
+      <button type="submit" className="btn btn-light" onClick={handle}>
+        Login
+      </button>
+    </>
+  );
+}
+
+
+
+

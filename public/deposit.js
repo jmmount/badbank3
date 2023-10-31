@@ -28,9 +28,6 @@ function Deposit() {
 }
 
 function DepositMsg(props) {
-  console.log('---------')
-  console.log(props.user.balance)
-  console.log('---------')
   return (
     <>
       <h5>Success {props.user.name}. Your new balance is ${props.user.balance}</h5>
@@ -40,6 +37,7 @@ function DepositMsg(props) {
         onClick={() => {
           props.setShow(true);
           props.setStatus('');
+          console.log(data);
         }}>
         Deposit again
       </button>
