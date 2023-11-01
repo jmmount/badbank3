@@ -9,7 +9,7 @@ function Withdraw() {
 
   return (
     <Card
-      bgcolor="primary"
+      bgcolor="info"
       header="Withdraw"
       body={
         show ? (

@@ -9,7 +9,7 @@ function Deposit() {
 
   return (
     <Card
-      bgcolor="primary"
+      bgcolor="info"
       header="Deposit"
       body={
         show ? (
