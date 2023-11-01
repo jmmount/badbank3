@@ -13,10 +13,12 @@ function AllData(){
 
     }, []);
 
+    const textStyle = {color: 'e9eeeb',};
+
     return (
         <>
-            <h5>All Data in Store:</h5>
-            <table className="table">
+            <h5 style={textStyle}>All Data in Store:</h5>
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>Name</th>

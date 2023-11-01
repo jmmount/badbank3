@@ -1,7 +1,10 @@
 function Spa() {
+  const gradientStyles = {
+    background: `linear-gradient(to bottom, #333, #4069e1), linear-gradient(to right, #333, #4069e1), radial-gradient(#333, #4069e1)`,
+  };
   return (
     <HashRouter>
-      <div>
+      <div style={gradientStyles}>
         <NavBar/>        
         <UserContext.Provider value={{users:[{name:'',email:'',password:'secret',balance:0}]}}>
           <div className="container" style={{padding: "20px"}}>
