@@ -37,7 +37,6 @@ function DepositMsg(props) {
         onClick={() => {
           props.setShow(true);
           props.setStatus('');
-          console.log(data);
         }}>
         Deposit again
       </button>
