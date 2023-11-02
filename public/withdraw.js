@@ -2,6 +2,7 @@ function Withdraw() {
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState('');
   const [loggedInUser, setLoggedInUser] = React.useState(JSON.parse(localStorage.getItem('user')));
+  const [userBalance, setUserBalance] = React.useState(null);
 
   const updateUserBalance = (newBalance) => {
     setLoggedInUser(prevUser => ({ ...prevUser, balance: newBalance }));
@@ -18,9 +19,10 @@ function Withdraw() {
             setStatus={setStatus}
             user={loggedInUser}
             updateUserBalance={updateUserBalance}
+            setUserBalance={setUserBalance}
           />
         ) : (
-          <WithdrawMsg user={loggedInUser} setShow={setShow} setStatus={setStatus} />
+          <WithdrawMsg user={loggedInUser} setShow={setShow} setStatus={setStatus} userBalance={userBalance}/>
         )
       }
     />
@@ -30,7 +32,8 @@ function Withdraw() {
 function WithdrawMsg(props) {
   return (
     <>
-      <h5>Success {props.user.name}, your new balance is {props.user.balance} dollars</h5>
+      <h5>Thank you for banking with BadBank3, {props.user.name}! </h5>
+      <p>Your current balance: ${props.userBalance}</p>
       <button
         type="submit"
         className="btn btn-light"
@@ -58,6 +61,7 @@ function WithdrawForm(props) {
             props.setStatus(JSON.stringify(data.value));
             props.setShow(false);
             props.updateUserBalance(data.newBalance); // Update user balance after successful Withdrawl
+            props.setUserBalance(data.value.balance);
             console.log('JSON:', data);
           } catch (err) {
             props.setStatus('Withdrawl failed');
