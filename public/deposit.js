@@ -50,10 +50,27 @@ function DepositMsg(props) {
 
 function DepositForm(props) {
   const [amount, setAmount] = React.useState('');
+  // Validation function
+  function validateAmount() {
+    if (amount <= 0) {
+     alert('Invalid transaction amount!');
+     setTimeout(() => {
+      setAmount('');
+    }, 500);
+      return false;
+    }
+
+    return true;
+  }
 
   function handle() {
+
     // Ensure the user object exists before accessing its properties
     if (props.user) {
+      if (!validateAmount()) {
+        return; // Return early if validation fails
+      }
+
       fetch(`/account/update/${props.user.email}/${amount}`)
         .then(response => response.text())
         .then(text => {
@@ -61,16 +78,17 @@ function DepositForm(props) {
             const data = JSON.parse(text);
             props.setStatus(JSON.stringify(data.value));
             props.setShow(false);
-            props.updateUserBalance(data.newBalance); // Update user balance after successful Deposit
+            props.updateUserBalance(data.newBalance); // Update user balance after successful withdrawal
             props.setUserBalance(data.value.balance);
             console.log('JSON:', data);
           } catch (err) {
-            props.setStatus('Deposit failed');
+            props.setStatus('Withdrawal failed');
             console.log('err:', text);
           }
         });
     }
   }
+
 
   return (
     <>
