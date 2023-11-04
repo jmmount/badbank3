@@ -27,9 +27,37 @@ function CreateForm(props){
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
+  
+  function validateCreate() {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      // The email format is valid
+      if (password.length >= 5) {
+        
+        return true;
+      } else {
+        // Additional condition is not met
+        alert("Password must be at least 5 characters.");
+        setTimeout(() => {
+          setPassword('');
+        }, 500);
+        return false;
+      }
+    } else {
+      // Email format is invalid
+      alert("You have entered an invalid email address!");
+      setTimeout(() => {
+        setEmail('');
+      }, 500);
+      return false;
+    }
+  }
+  
 
   function handle(){
     console.log(name,email,password);
+    if (!validateCreate()) {
+      return; // Return early if validation fails
+    }
     const url = `/account/create/${name}/${email}/${password}`;
     (async () => {
         var res  = await fetch(url);
