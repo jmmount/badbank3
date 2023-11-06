@@ -13,9 +13,8 @@ function Spa() {
             <Route path="/login/" component={Login} />
             <Route path="/deposit/" component={Deposit} />
             <Route path="/withdraw/" component={Withdraw} />
-            {/* <Route path="/transactions/" component={Transactions} /> */}
             <Route path="/balance/" component={Balance} />
-            <Route path="/alldata/" component={AllData} />
+           {/* <Route path="/alldata/" component={AllData} />*/}
           </div>
         </UserContext.Provider>
       </div>

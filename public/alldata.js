@@ -1,4 +1,4 @@
-function AllData(){
+/*function AllData(){
     const [data, setData] = React.useState([]);    
 
     React.useEffect(() => {
@@ -40,7 +40,7 @@ function AllData(){
             </table>
         </>
     );
-}
+} */
 
 
 
