@@ -22,9 +22,8 @@ function NavBar() {
           <li className="nav-item">
             <Link to="/balance/" className="nav-link">Balance</Link>
           </li>
-          <li className="nav-item">
-            <Link to="/alldata/" className="nav-link">AllData</Link>
-          </li>
+        {/* all data tab
+        <li className="nav-item"><Link to="/alldata/" className="nav-link">AllData</Link> </li> */}
         </ul>
         <ul className="navbar-nav ml-auto" id="login-menu">
           <li className="nav-item">
