@@ -34,14 +34,14 @@ node index.js
 
 ### If you would like to use the database feature you will need to create an Connection String by creating an account on [MongoDB](https://account.mongodb.com/account/register?_ga=2.104161920.1248733531.1703200375-1815639311.1701036509)
 
-### You can add the connection sting to the [dal.js](./dal.js)
-
+### You can add the connection sting to [dal.js](./dal.js)
+#### You will need to create a .env file to store your [MONGO_URI]()
 
 ## License
 
 MIT License
 
-Copyright (c) [2023] [JMMount]
+Copyright (c) [2023] [Jason Mount]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
